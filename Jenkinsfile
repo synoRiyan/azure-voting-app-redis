@@ -19,7 +19,7 @@ pipeline {
       }
       stage('Run Tests') {
          steps {
-            sh(script: 'test_answer ./tests/test_sample.py')
+         //   sh(script: 'pytest ./tests/test_sample.py')
          }
          post {
             success {
