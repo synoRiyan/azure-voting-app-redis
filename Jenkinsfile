@@ -19,6 +19,7 @@ pipeline {
       }
       stage('Run Tests') {
          steps {
+            echo "Runnning in $WORKSPACE"
          //   sh(script: 'pytest ./tests/test_sample.py')
          }
          post {
