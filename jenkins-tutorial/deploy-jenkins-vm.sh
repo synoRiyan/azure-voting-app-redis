@@ -19,8 +19,8 @@ then
     # Open port 22 to allow ssh traffic to host.
     az vm open-port --port 22 --resource-group $resourceGroup --name $virtualMachine --priority 102
 
-    # Open port 8080 to allow web traffic to host.
-    az vm open-port --port 8080 --resource-group $resourceGroup --name $virtualMachine --priority 103
+    # Open port 8000 to allow web traffic to host.
+    az vm open-port --port 8000 --resource-group $resourceGroup --name $virtualMachine --priority 103
 
     # Use CustomScript extension to install NGINX.
     az vm extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --vm-name $virtualMachine --resource-group $resourceGroup --settings '{"fileUris": ["https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/config-jenkins.sh"],"commandToExecute": "./config-jenkins.sh"}'
@@ -34,7 +34,7 @@ then
     ssh -o "StrictHostKeyChecking no" $adminUser@$ip sudo chmod 777 /var/lib/jenkins/config
 
     # Get Jenkins Unlock Key
-    url="http://$ip:8080"
+    url="http://$ip:8000"
     echo "Open a browser to $url"
     echo "Enter the following to Unlock Jenkins:"
     ssh -o "StrictHostKeyChecking no" $adminUser@$ip sudo "cat /var/lib/jenkins/secrets/initialAdminPassword"
