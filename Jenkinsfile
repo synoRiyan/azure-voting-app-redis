@@ -19,7 +19,7 @@ pipeline {
       }
       stage('Run Tests') {
          steps {
-            sh(script: 'pytest ./tests/test_sample.py')
+            sh(script: 'test_answer ./tests/test_sample.py')
          }
          post {
             success {
@@ -36,7 +36,7 @@ pipeline {
             dir("$WORKSPACE/azure-vote") {
                script {
                   docker.withRegistry('', 'dockerhub') {
-                     def image = docker.build('blackdentech/jenkins-course:2023')
+                     def image = docker.build('riyansheikh/jenkins-course:2023')
                      image.push()
                   }
                }
