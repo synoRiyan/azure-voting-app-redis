@@ -18,9 +18,9 @@ pipeline {
          }
       }
       stage('Run Tests') {
-         //steps {
-        //  //  sh(script: 'pytest ./tests/test_sample.py')
-        // }
+         steps {
+            echo "Progress! :)"
+         }
          post {
             success {
                echo "Tests passed! :)"
